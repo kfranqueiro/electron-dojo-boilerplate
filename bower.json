@@ -1,0 +1,6 @@
+{
+	"name": "electron-dojo-boilerplate",
+	"dependencies": {
+		"dojo": "~1.10.4"
+	}
+}

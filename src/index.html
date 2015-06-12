@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="resources/main.css">
+	</head>
+	<body>
+		<script>
+			// jshint unused: false
+			var dojoConfig = {
+				async: true,
+				deps: [ 'app/main' ],
+				has: {
+					'host-node': false // Prevent dojo from being fooled by Electron
+				}
+			};
+
+			// Move Electron's require out before loading Dojo
+			window.electronRequire = require;
+			delete window.require;
+		</script>
+		<script src="dojo/dojo.js"></script>
+		<script>
+			// Now move dojoRequire out and put require back
+			window.dojoRequire = require;
+			window.require = window.electronRequire;
+		</script>
+	</body>
+</html>
