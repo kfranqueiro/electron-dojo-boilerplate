@@ -37,11 +37,17 @@ module.exports = function (grunt) {
 			},
 
 			mac: {
-				options: { platform: 'darwin' }
+				options: {
+					icon: 'icon.icns',
+					platform: 'darwin'
+				}
 			},
 
 			win: {
-				options: { platform: 'win32' }
+				options: {
+					icon: 'icon.ico',
+					platform: 'win32'
+				}
 			}
 		},
 
