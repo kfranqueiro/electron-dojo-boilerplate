@@ -22,8 +22,11 @@ I expect to work some more things out.  I also expect to get some things wrong, 
 
 ### Release
 
-`grunt release`
+Run one of the following:
 
-The application will be deployed into the `dist` directory.
+* `grunt release-linux`
+* `grunt release-mac`
+* `grunt release-win`
+* `grunt release-all` to build all three
 
-Currently the release task is only set up for Mac OS X, but I expect to add tasks/options for Windows and Linux.
+The application will be deployed under the `dist` directory.
