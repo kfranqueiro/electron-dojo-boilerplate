@@ -5,6 +5,8 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-download-electron');
 	grunt.loadNpmTasks('grunt-electron');
 
+	grunt.loadTasks('tasks');
+
 	var packageConfig = grunt.file.readJSON('package.json');
 
 	grunt.initConfig({
@@ -51,6 +53,13 @@ module.exports = function (grunt) {
 			}
 		},
 
+		'rename-electron-helper': {
+			options: {
+				name: '<%= appName %>',
+				dir: 'dist'
+			}
+		},
+
 		clean: {
 			css: {
 				src: [ 'src/resources/**/*.css' ]
@@ -90,7 +99,7 @@ module.exports = function (grunt) {
 	var commonReleaseTasks = [ 'stylus', 'clean:release' ];
 
 	grunt.registerTask('release-linux', commonReleaseTasks.concat('electron:linux'));
-	grunt.registerTask('release-mac', commonReleaseTasks.concat('electron:mac'));
+	grunt.registerTask('release-mac', commonReleaseTasks.concat('electron:mac', 'rename-electron-helper'));
 	grunt.registerTask('release-win', commonReleaseTasks.concat('electron:win'));
-	grunt.registerTask('release-all', commonReleaseTasks.concat('electron'));
+	grunt.registerTask('release-all', commonReleaseTasks.concat('electron', 'rename-electron-helper'));
 };
