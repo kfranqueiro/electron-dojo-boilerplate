@@ -7,6 +7,6 @@
 		"grunt-contrib-stylus": "~0.21.0",
 		"grunt-contrib-watch": "~0.6.1",
 		"grunt-download-electron": "~2.1.1",
-		"grunt-electron": "~1.0.0"
+		"electron-packager": "https://github.com/kfranqueiro/electron-packager/tarball/refactor"
 	}
 }

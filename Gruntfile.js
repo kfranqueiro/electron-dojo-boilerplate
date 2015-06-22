@@ -3,7 +3,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-stylus');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-download-electron');
-	grunt.loadNpmTasks('grunt-electron');
 
 	grunt.loadTasks('tasks');
 
@@ -12,7 +11,7 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		appName: 'Electron Dojo Boilerplate',
 		appVersion: packageConfig.version,
-		electronVersion: '0.28.0',
+		electronVersion: '0.28.2',
 
 		'download-electron': {
 			version: '<%= electronVersion %>',
@@ -32,8 +31,6 @@ module.exports = function (grunt) {
 
 			linux: {
 				options: {
-					// For some reason electron-packager doesn't create a subdirectory for linux...
-					out: 'dist/<%= appName %>-linux',
 					platform: 'linux'
 				}
 			},
@@ -50,13 +47,6 @@ module.exports = function (grunt) {
 					icon: 'icon.ico',
 					platform: 'win32'
 				}
-			}
-		},
-
-		'rename-electron-helper': {
-			options: {
-				name: '<%= appName %>',
-				dir: 'dist'
 			}
 		},
 
@@ -99,7 +89,7 @@ module.exports = function (grunt) {
 	var commonReleaseTasks = [ 'stylus', 'clean:release' ];
 
 	grunt.registerTask('release-linux', commonReleaseTasks.concat('electron:linux'));
-	grunt.registerTask('release-mac', commonReleaseTasks.concat('electron:mac', 'rename-electron-helper'));
+	grunt.registerTask('release-mac', commonReleaseTasks.concat('electron:mac'));
 	grunt.registerTask('release-win', commonReleaseTasks.concat('electron:win'));
-	grunt.registerTask('release-all', commonReleaseTasks.concat('electron', 'rename-electron-helper'));
+	grunt.registerTask('release-all', commonReleaseTasks.concat('electron'));
 };
