@@ -19,18 +19,14 @@ and the Stylus CSS preprocessor.
 
 ### Release
 
-Run one of the following:
+`grunt release`
 
-* `grunt release-linux`
-* `grunt release-mac`
-* `grunt release-win`
-* `grunt release-all` to build all three
+This will set up releases for all platforms possible under the `dist` directory.
 
-The application will be deployed under the `dist` directory.
+Note that cross-OS limitations may apply.  In particular:
 
-Note that there may be limitations within [electron-packager](https://github.com/maxogden/electron-packager)
-on which OS releases can be built on which host OS.  (For example, building for Windows with a custom icon requires
-wine on non-Windows OSes for rcedit.)
+* Building for Windows targets with a custom icon requires wine on non-Windows OSes for rcedit
+* Building for OS X is skipped on Windows due to dodgy symlink support
 
 ## License
 

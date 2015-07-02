@@ -11,7 +11,7 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		appName: 'Electron Dojo Boilerplate',
 		appVersion: packageConfig.version,
-		electronVersion: '0.28.2',
+		electronVersion: '0.28.3',
 
 		'download-electron': {
 			version: '<%= electronVersion %>',
@@ -19,33 +19,17 @@ module.exports = function (grunt) {
 		},
 
 		electron: {
-			// TODO: icon
-			options: {
-				name: '<%= appName %>',
-				dir: 'src',
-				out: 'dist',
-				version: '<%= electronVersion %>',
-				arch: 'x64',
-				asar: true
-			},
-
-			linux: {
+			release: {
 				options: {
-					platform: 'linux'
-				}
-			},
-
-			mac: {
-				options: {
-					icon: 'icon.icns',
-					platform: 'darwin'
-				}
-			},
-
-			win: {
-				options: {
-					icon: 'icon.ico',
-					platform: 'win32'
+					name: '<%= appName %>',
+					dir: 'src',
+					out: 'dist',
+					asar: true,
+					prune: true,
+					version: '<%= electronVersion %>',
+					arch: 'all',
+					platform: 'all',
+					icon: 'icon'
 				}
 			}
 		},
@@ -85,11 +69,5 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('default', [ 'stylus', 'watch' ]);
 	grunt.registerTask('dev', [ 'download-electron', 'stylus' ]);
-
-	var commonReleaseTasks = [ 'stylus', 'clean:release' ];
-
-	grunt.registerTask('release-linux', commonReleaseTasks.concat('electron:linux'));
-	grunt.registerTask('release-mac', commonReleaseTasks.concat('electron:mac'));
-	grunt.registerTask('release-win', commonReleaseTasks.concat('electron:win'));
-	grunt.registerTask('release-all', commonReleaseTasks.concat('electron'));
+	grunt.registerTask('release', [ 'stylus', 'clean:release', 'electron' ]);
 };
