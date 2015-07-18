@@ -2,7 +2,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-stylus');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-download-electron');
 
 	grunt.loadTasks('tasks');
 
@@ -13,12 +12,14 @@ module.exports = function (grunt) {
 		appVersion: packageConfig.version,
 		electronVersion: '0.28.3',
 
-		'download-electron': {
-			version: '<%= electronVersion %>',
-			outputDir: 'electron'
+		'electron-download': {
+			options: {
+				out: 'electron',
+				version: '<%= electronVersion %>'
+			}
 		},
 
-		electron: {
+		'electron-packager': {
 			release: {
 				options: {
 					name: '<%= appName %>',
@@ -68,6 +69,6 @@ module.exports = function (grunt) {
 	});
 
 	grunt.registerTask('default', [ 'stylus', 'watch' ]);
-	grunt.registerTask('dev', [ 'download-electron', 'stylus' ]);
-	grunt.registerTask('release', [ 'stylus', 'clean:release', 'electron' ]);
+	grunt.registerTask('dev', [ 'electron-download', 'stylus' ]);
+	grunt.registerTask('release', [ 'stylus', 'clean:release', 'electron-packager' ]);
 };
