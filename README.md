@@ -5,10 +5,15 @@ and the Stylus CSS preprocessor.
 
 ## Setup
 
-1. Tweak `package.json` and `bower.json` as desired,
-	and replace "Electron Dojo Boilerplate" in `Gruntfile.js` and `src/browser/main.js`
+1. Clone this repository into a directory of your choice
+1. `rm -rf .git` and `git init` to nuke this repo's history
+1. Update `name` in `package.json` and `bower.json`, and otherwise tweak as desired
 1. `npm install`
 1. `bower install`
+1. Replace "Electron Dojo Boilerplate" in `Gruntfile.js` and `src/browser/main.js`
+1. Update or replace `LICENSE` as desired
+1. Optionally replace `icon.ico` and `icon.icns` with your own icon, or delete them and remove `icon` from
+	the `electron-packager` task configuration in `Gruntfile.js`
 
 ## Usage
 
@@ -21,7 +26,8 @@ and the Stylus CSS preprocessor.
 
 `grunt release`
 
-This will set up releases for all platforms possible under the `dist` directory.
+This will set up releases for OS X, Linux, and Windows under the `dist` directory.  (Target platforms
+can be customized via the `arch` and `platform` properties in the `electron-packager` task configuration.)
 
 Note that cross-OS limitations may apply.  In particular:
 
