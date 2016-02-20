@@ -10,7 +10,7 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		appName: 'Electron Dojo Boilerplate',
 		appVersion: packageConfig.version,
-		electronVersion: '0.36.7',
+		electronVersion: '0.36.8',
 
 		'electron-download': {
 			options: {

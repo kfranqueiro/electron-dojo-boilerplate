@@ -29,7 +29,7 @@ if (process.env.ELECTRON_APP_DEBUG) {
 					label: '&Reload',
 					accelerator: 'CmdOrCtrl+R',
 					click: function () {
-						BrowserWindow.getFocusedWindow().reloadIgnoringCache();
+						BrowserWindow.getFocusedWindow().webContents.reloadIgnoringCache();
 					}
 				},
 				{
